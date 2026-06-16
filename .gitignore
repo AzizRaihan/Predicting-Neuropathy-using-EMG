@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large files (pickle models)
+*.pkl
+all_model_results.pkl
+more_model_results.pkl
+neuropathy_final_model.pkl
+
+# Large datasets (keep processed version, exclude raw)
+DPN_Clinical_mechanism_and_EMG.csv
+
+# Streamlit
+.streamlit/credentials.toml
+.streamlit/secrets.toml
+
+# CatBoost logs
+catboost_info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
