@@ -1,10 +1,11 @@
+import os
 import joblib
 import pandas as pd
 import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
-MODEL_PATH = '/Users/azizraihan/Desktop/mom499/all_model_results.pkl'
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'all_model_results.pkl')
 
 _pipeline = None
 

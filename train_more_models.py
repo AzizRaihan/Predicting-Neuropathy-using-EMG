@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import joblib
@@ -13,7 +14,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import ExtraTreesClassifier, GradientBoostingClassifier
 from catboost import CatBoostClassifier
 
-DATA_PATH = '/Users/azizraihan/Desktop/mom499/neuropathy_clean_10k.csv'
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'neuropathy_clean_10k.csv')
 
 df = pd.read_csv(DATA_PATH)
 X = df.drop('target', axis=1)
@@ -107,5 +108,6 @@ prev = {
 for name, acc in sorted(prev.items(), key=lambda x: -x[1]):
     print(f"  {name:<25} {acc:>10.4f}")
 
-joblib.dump(results, '/Users/azizraihan/Desktop/mom499/more_model_results.pkl')
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'more_model_results.pkl')
+joblib.dump(results, output_path)
 print("\nAll new pipelines saved to more_model_results.pkl")

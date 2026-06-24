@@ -14,11 +14,11 @@ env/
 *.swp
 *.swo
 
-# Large files (pickle models)
-*.pkl
-all_model_results.pkl
+# Large files (pickle models) — exclude stale/deprecated ones
+# Note: all_model_results.pkl is essential for the app, so it's tracked
 more_model_results.pkl
 neuropathy_final_model.pkl
+catboost_info/
 
 # Large datasets (keep processed version, exclude raw)
 DPN_Clinical_mechanism_and_EMG.csv

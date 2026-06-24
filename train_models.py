@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import joblib
@@ -10,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 
-DATA_PATH = '/Users/azizraihan/Desktop/mom499/neuropathy_clean_10k.csv'
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'neuropathy_clean_10k.csv')
 
 df = pd.read_csv(DATA_PATH)
 X = df.drop('target', axis=1)
@@ -90,5 +91,6 @@ for name, r in sorted(results.items(), key=lambda x: -x[1]['mean_cv_acc']):
     print(f"  {name:<25} {r['mean_cv_acc']:>10.4f} {r['std_cv_acc']:>8.4f}")
 
 # Save all pipelines for later use
-joblib.dump(results, '/Users/azizraihan/Desktop/mom499/all_model_results.pkl')
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'all_model_results.pkl')
+joblib.dump(results, output_path)
 print("\nAll pipelines saved to all_model_results.pkl")

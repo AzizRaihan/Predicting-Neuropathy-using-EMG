@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import joblib
@@ -15,7 +16,7 @@ from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
 
-DATA_PATH = '/Users/azizraihan/Desktop/mom499/neuropathy_clean_10k.csv'
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'neuropathy_clean_10k.csv')
 df = pd.read_csv(DATA_PATH)
 X = df.drop('target', axis=1)
 y = df['target']
@@ -133,7 +134,7 @@ else:
     best_model, best_name = stacker, 'Stacking'
 
 # Save scaler + best model together as a pipeline-like dict
-joblib.dump({'scaler': scaler, 'model': best_model, 'name': best_name},
-            '/Users/azizraihan/Desktop/mom499/neuropathy_final_model.pkl')
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'neuropathy_final_model.pkl')
+joblib.dump({'scaler': scaler, 'model': best_model, 'name': best_name}, output_path)
 print(f"\n  Best ensemble: {best_name} (CV acc: {best_acc:.4f})")
 print("  Saved to neuropathy_final_model.pkl")
